@@ -1,42 +1,71 @@
 {{!-- Setup the index.handlebars to have the template that Handlebars can render onto.
 Create a button in index.handlebars that will submit the user input into the database. --}}
 
-<h1>Eat da Burger!</h1>
-
-<div class="img">
-   <img src="../public/assets/img/burger.jpg">
-</div>
-
-<div class="results">
-    <div class="namedBurgers">
-        <ul>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <img src=".../public/assets/img/burger.jpg" class="rounded mx-auto d-block" alt="burger pic">
+      
+      <h1 class="text-center title">Eat-Da-Burger!</h1>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-6">
+      <div>
         {{#each burgers}}
-            {{#unless devoured}}
-                {{> burgers/burger-block devoured=false}}
-            {{/unless}}
+          {{#unless this.devoured}}
+            <div class="row">
+              <div class="col-md-9">
+              <div class="uneaten">
+                <p class="text-center">
+                {{this.id}}. {{this.burger_name}}
+                </p>
+              </div>
+              </div>
+              <div class="col-md-3">
+              <div>
+              <form action="/{{this.id}}?_method=PUT" method="POST">
+                <input type="hidden" name="devoured" value="true">
+                <button type="submit" class="center-block">Devour It!</button>
+              </form>
+              </div>
+              </div>
+            </div>
+          {{/unless}}
         {{/each}}
-        </ul>
+      </div>
     </div>
-    <div class="devouredBurgers">
-        <ul>
+    <div class="col-md-4">
         {{#each burgers}}
-            {{#if devoured}}
-                {{> burgers/burger-block devoured=true}}
-            {{/if}}
+          {{#if this.devoured}}
+            <div class="eaten">
+            <p class="text-center">
+              {{this.id}}. {{this.burger_name}}
+            </p>
+            </div>
+          {{/if}}
         {{/each}}
-        </ul>
     </div>
-</div>
-
-
-<div class="form"> 
-<form>
-    <div>
-        <label for="burgerName">Burger Name</label>
-        <input type="text" id="burgerName" name="burgerName">
+    <div class="col-md-1">
     </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <form class="create-update-form" action="/" method="POST">
 
-    <button type="submit">Add Burger</button>
-</form>
-<p>Enter the type of burger you want to eat, then click the "Submit" button.</p>
+        <div class="form-group">
+          {{!-- <label for="ca">Burger Name:</label> --}}
+          <input type="text" id="ca" name="name" class="center-block burger_field">
+        </div>
+
+        <button type="submit" class="center-block btn btn-primary">Submit</button>
+        <p class="text-center">Enter a burger you want to eat and click the "Submit" button</p>
+      </form>
+    </div>
+  </div>
+
 </div>
