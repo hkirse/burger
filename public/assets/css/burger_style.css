@@ -1,15 +1,17 @@
 .h1 {
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-weight: 800;
+	font-size: 20px;
 }
 
 .body {
-	background-color: orange;
+	background-image: url("../img/Background.jpg");
 	margin: 0px;
 	padding: 0px;
 }
 
 .title {
-	color: red;
+	color: rgb(0, 60, 255);
 }
 
 .uneaten {
