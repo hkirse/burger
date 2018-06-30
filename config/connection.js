@@ -4,11 +4,11 @@ var connection;
 
 
     connection = mysql.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "DurhamPortland910",
-    database: "burgers_db"
+    host: "ec2-184-73-175-95.compute-1.amazonaws.com",
+    port: 5432,
+    user: "hnsiwvpvvrxtle",
+    password: "ae4138c1864fb9cf31155e94031065bb750774e0fe8a9d622e96ddc6645cb7a8",
+    database: "df10ln5njchpki"
 });
 
 connection.connect(function(err) {
